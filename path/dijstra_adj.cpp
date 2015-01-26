@@ -1,10 +1,19 @@
 #include <iostream>
+#include <set>
 #include <vector>
 #include <list>
 #include <climits>
+#include <queue>   
 #define V 9
 
 using namespace std;
+
+class ComparePair{
+    public:
+        bool operator() (const pair<int,int> p1 , const pair<int,int> p2)  const {
+            return p1.second > p2.second;
+        }
+};
 template<class T>
 class Graph{
     public:
@@ -51,7 +60,7 @@ class Graph{
                 }
             }
             
-            unvis.remove(minindex);
+            unvis.erase(minindex);
 //            cout << "\n returning  " << min << "  " <<minindex;
             return minindex;
         }
@@ -61,7 +70,7 @@ class Graph{
             vector<bool> visit(V,false);
             set<int> unvis;
             for(int i = 0; i < V; ++i)
-                unvis.push_back(i);
+                unvis.insert(i);
             mindist[source] = 0;
 
 
@@ -84,9 +93,8 @@ class Graph{
             cout << "\n\n";
             printgraph();
         }
-
         void dijkstraHeap(int source){
-//            priority_queue<>
+            priority_queue<pair<int,int> ,vector<pair<int,int> >,ComparePair>  pq;
         }
 };
 
