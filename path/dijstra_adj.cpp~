@@ -1,0 +1,61 @@
+#include <iostream>
+#include <vector>
+#include <list>
+#include <climits>
+#define V 9
+
+using namespace std;
+template<class T>
+class Graph{
+public:
+    vector< list< pair<int,T> > > graph;
+    int size;
+    
+    Graph(int ar[V][V],int size) : graph(size){
+       
+       pair<int,T> tpair;
+       list<pair<int,T> > lst; 
+        for(int i =0; i < size; ++i){
+            lst.resize(0);
+            for(int j =0; j < size; ++j){
+                
+                if(ar[i][j] != 0){
+                    tpair = make_pair(j,ar[i][j]);
+                    lst.push_back(tpair);     
+                }
+            }    
+            graph[i] = lst;
+        }
+        
+               printgraph();
+        cout <<"\n";
+    }
+    
+    void printgraph(){
+        for(typename vector< list<pair<int,T> > > :: iterator it = graph.begin(),end=graph.end(); it != end; ++it){
+            cout<< "\nNode: " << it - graph.begin() << ":";
+            for(typename list<pair<int,T> > ::iterator lit= it->begin(),lend = it->end(); lit != lend; ++lit ){
+                cout<< "  " << lit -> first << "("  << lit->second <<")" ;
+            }
+            cout << "\n";
+        }
+    }
+    void dijkstra(int source){
+         vector <T> mindist(V,INT_MAX);                   
+    }
+};
+
+int main(){
+    int graph[V][V] = {{0, 4, 0, 0, 0, 0, 0, 8, 0},
+                      {4, 0, 8, 0, 0, 0, 0, 11, 0},
+                      {0, 8, 0, 7, 0, 4, 0, 0, 2},
+                      {0, 0, 7, 0, 9, 14, 0, 0, 0},
+                      {0, 0, 0, 9, 0, 10, 0, 0, 0},
+                      {0, 0, 4, 0, 10, 0, 2, 0, 0},
+                      {0, 0, 0, 14, 0, 2, 0, 1, 6},
+                      {8, 11, 0, 0, 0, 0, 1, 0, 7},
+                      {0, 0, 2, 0, 0, 0, 6, 7, 0}
+                     };
+    Graph<int> g(graph,V);
+        return 0;
+}

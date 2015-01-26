@@ -1,0 +1,26 @@
+#include <iotream>
+#include <vector>
+using namespace std;
+
+template<class T> class Heap{
+    vector<T> heap;
+    int size;
+    public:
+        Heap(T *ar, int s): heap(ar){
+            for(vector<T>::iterator it = heap.begin(), end = heap.end(); it != end; ++it){
+                cout<< *it << "\n";
+            }    
+            /*
+            for(int i = s/2; i >= 0; --i){
+                
+            }*/
+            
+        }
+};
+
+int main(){
+    int ar[] = {5,6,2,5,16,1,12,7};
+    
+    Heap<int> h(ar, (sizeof(ar)/sizeof(ar[0])) );
+    
+}
