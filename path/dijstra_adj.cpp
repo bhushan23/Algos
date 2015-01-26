@@ -5,13 +5,12 @@
 #include <climits>
 #include <queue>   
 #define V 9
-
 using namespace std;
 
 class ComparePair{
     public:
         bool operator() (const pair<int,int> p1 , const pair<int,int> p2)  const {
-            return p1.second > p2.second;
+            return p1.second <  p2.second;
         }
 };
 template<class T>
@@ -54,6 +53,7 @@ class Graph{
             int minindex = -1;
     
             for( set<int>::iterator it = unvis.begin(),end=unvis.end(); it != end; ++it){
+             //   cout << "Comapring "<< mind[*it]   << " and " << min << "\n"; 
                 if(mind[*it] < min){ 
                     min = mind[*it];
                     minindex = *it;
@@ -75,11 +75,13 @@ class Graph{
 
 
             while( !unvis.empty() ){    
-                min = getMinDist(mindist,unvis);
+               min = getMinDist(mindist,unvis);
+            // cout << "  min: " << min << " " << unvis.size() << "\n";
+                
                 if(min != -1){
                     
                     for(typename list<pair<int,T> > ::iterator lit= graph[min].begin(),lend =graph[min].end(); lit != lend; ++lit ){
-                        if(mindist[min] != INT_MAX && unvis.find(visit[lit->first]) != unvis.end() && mindist[lit->first] > mindist[min] + lit->second){
+                        if(mindist[min] != INT_MAX && unvis.find(lit->first) != unvis.end() && mindist[lit->first] > mindist[min] + lit->second){
                             mindist[lit->first] = mindist[min] + lit->second; 
                         } 
                     }
@@ -94,7 +96,32 @@ class Graph{
             printgraph();
         }
         void dijkstraHeap(int source){
+            typedef pair<int,int> ii;
             priority_queue<pair<int,int> ,vector<pair<int,int> >,ComparePair>  pq;
+            pq.push(make_pair(0,0));
+            pair<int,int> pa;
+            vector< int > mindist(V,INT_MAX);
+            int index,data;
+            mindist[0] = 0;
+            while(!pq.empty()){
+                pa = pq.top();
+                pq.pop();
+                index = pa.first;
+                data = pa.second;
+                for(typename list<pair<int,T> > ::iterator lit= graph[index].begin(),lend =graph[index].end(); lit != lend; ++lit ){
+                        if(mindist[lit->first] > mindist[index] + lit->second){
+                            mindist[lit->first] = mindist[index] + lit->second;
+                            pq.push(make_pair(lit->first,mindist[lit->first]));
+                        } 
+                    }
+
+            }
+         cout << "\nUsing PQ\n";
+            for(typename vector<T> ::iterator it = mindist.begin(),end= mindist.end(); it != end; ++it){
+                cout << *it << "  ";
+            }
+
+
         }
 };
 
@@ -110,6 +137,7 @@ int main(){
         {0, 0, 2, 0, 0, 0, 6, 7, 0}
     };
     Graph<int> g(graph,V);
-    g.dijkstra(0);
+  g.dijkstra(0);
+    g.dijkstraHeap(0);
     return 0;
 }
