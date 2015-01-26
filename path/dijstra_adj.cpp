@@ -40,11 +40,11 @@ class Graph{
                 cout << "\n";
             }
         }
-        int getMinDist(vector<T> &mind,list<int> &unvis){
+        int getMinDist(vector<T> &mind,set<int> &unvis){
             T min = INT_MAX;
             int minindex = -1;
     
-            for( list<int>::iterator it = unvis.begin(),end=unvis.end(); it != end; ++it){
+            for( set<int>::iterator it = unvis.begin(),end=unvis.end(); it != end; ++it){
                 if(mind[*it] < min){ 
                     min = mind[*it];
                     minindex = *it;
@@ -59,7 +59,7 @@ class Graph{
             int min;
             vector <T> mindist(V,INT_MAX);
             vector<bool> visit(V,false);
-            list<int> unvis;
+            set<int> unvis;
             for(int i = 0; i < V; ++i)
                 unvis.push_back(i);
             mindist[source] = 0;
@@ -68,9 +68,9 @@ class Graph{
             while( !unvis.empty() ){    
                 min = getMinDist(mindist,unvis);
                 if(min != -1){
-                    visit[min] = true;
+                    
                     for(typename list<pair<int,T> > ::iterator lit= graph[min].begin(),lend =graph[min].end(); lit != lend; ++lit ){
-                        if(mindist[min] != INT_MAX && visit[lit->first] == false && mindist[lit->first] > mindist[min] + lit->second){
+                        if(mindist[min] != INT_MAX && unvis.find(visit[lit->first]) != unvis.end() && mindist[lit->first] > mindist[min] + lit->second){
                             mindist[lit->first] = mindist[min] + lit->second; 
                         } 
                     }
