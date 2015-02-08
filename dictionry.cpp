@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <unordered_map>
 #include <list>
 #include <stdio.h>
 #include <algorithm>
@@ -11,7 +12,7 @@ using namespace std;
 class SearchDic{
     public:
         string key;
-        hash_map<string,list<string> > Matchstr;
+        unordered_map<string,list<string> > Matchstr;
         queue<pair<string,int> > que;
 
         SearchDic(string &key1) : key(key1)
@@ -33,7 +34,7 @@ class SearchDic{
                 que.pop();
 
                 if (Matchstr.find(tp.first) == Matchstr.end()) {
-                      Matchstr.insert(make_pair(tp.first,NULL));
+                      Matchstr[tp.first] = lst;
                       for(int i = tp.second+1; i < key.size(); ++i) {
                             string ts = tp.first + key[i];
                             que.push(make_pair(ts,i));
@@ -55,7 +56,7 @@ class SearchDic{
         
         void Print()
         {
-            for (map<string,list<string> > :: iterator mit = Matchstr.begin(), mend = Matchstr.end(); mit != mend; ++mit) {
+            for (unordered_map<string,list<string> > :: iterator mit = Matchstr.begin(), mend = Matchstr.end(); mit != mend; ++mit) {
                 cout << "\n" << mit->first << " : ";
                 for (list<string> :: iterator lit = mit->second.begin(), lend = mit->second.end(); lit != lend; ++lit ) {
                    cout << *lit << " " ; 
