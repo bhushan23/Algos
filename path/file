@@ -1,0 +1,95 @@
+
+Node: 0:  1(4)  7(8)
+
+Node: 1:  0(4)  2(8)  7(11)
+
+Node: 2:  1(8)  3(7)  5(4)  8(2)
+
+Node: 3:  2(7)  4(9)  5(14)
+
+Node: 4:  3(9)  5(10)
+
+Node: 5:  2(4)  4(10)  6(2)
+
+Node: 6:  3(14)  5(2)  7(1)  8(6)
+
+Node: 7:  0(8)  1(11)  6(1)  8(7)
+
+Node: 8:  2(2)  6(6)  7(7)
+
+Comapring 0 and 2147483647
+Comapring 2147483647 and 0
+Comapring 2147483647 and 0
+Comapring 2147483647 and 0
+Comapring 2147483647 and 0
+Comapring 2147483647 and 0
+Comapring 2147483647 and 0
+Comapring 2147483647 and 0
+Comapring 2147483647 and 0
+  min: 0 8
+Comapring 4 and 2147483647
+Comapring 2147483647 and 4
+Comapring 2147483647 and 4
+Comapring 2147483647 and 4
+Comapring 2147483647 and 4
+Comapring 2147483647 and 4
+Comapring 8 and 4
+Comapring 2147483647 and 4
+  min: 1 7
+Comapring 12 and 2147483647
+Comapring 2147483647 and 12
+Comapring 2147483647 and 12
+Comapring 2147483647 and 12
+Comapring 2147483647 and 12
+Comapring 8 and 12
+Comapring 2147483647 and 8
+  min: 7 6
+Comapring 12 and 2147483647
+Comapring 2147483647 and 12
+Comapring 2147483647 and 12
+Comapring 2147483647 and 12
+Comapring 9 and 12
+Comapring 15 and 9
+  min: 6 5
+Comapring 12 and 2147483647
+Comapring 23 and 12
+Comapring 2147483647 and 12
+Comapring 11 and 12
+Comapring 15 and 11
+  min: 5 4
+Comapring 12 and 2147483647
+Comapring 23 and 12
+Comapring 21 and 12
+Comapring 15 and 12
+  min: 2 3
+Comapring 19 and 2147483647
+Comapring 21 and 19
+Comapring 14 and 19
+  min: 8 2
+Comapring 19 and 2147483647
+Comapring 21 and 19
+  min: 3 1
+Comapring 21 and 2147483647
+  min: 4 0
+
+DONE
+0  4  12  19  21  11  9  8  14  
+
+
+Node: 0:  1(4)  7(8)
+
+Node: 1:  0(4)  2(8)  7(11)
+
+Node: 2:  1(8)  3(7)  5(4)  8(2)
+
+Node: 3:  2(7)  4(9)  5(14)
+
+Node: 4:  3(9)  5(10)
+
+Node: 5:  2(4)  4(10)  6(2)
+
+Node: 6:  3(14)  5(2)  7(1)  8(6)
+
+Node: 7:  0(8)  1(11)  6(1)  8(7)
+
+Node: 8:  2(2)  6(6)  7(7)

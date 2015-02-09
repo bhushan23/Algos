@@ -8,9 +8,7 @@ int maxOf(vector< vector<int> > &vec,int i,int j){
         max = vec[i-1][j];
     if( max < vec[i][j-1] )
         max = vec[i][j-1];
-    if( max < vec[i-1][j-1] )
-        max = vec[i-1][j-1];
-    return max;
+   return max;
 }
 int LCS(string &s1,string &s2){
     vector< vector<int> > vec(s1.length(), vector<int> (s2.length(),0));
@@ -29,7 +27,7 @@ int LCS(string &s1,string &s2){
         for(int j = 1; j <len2 ; ++j ){
             maxin = maxOf(vec,i,j);
             if(s1.at(i) == s2.at(j)){
-                ++maxin;
+                maxin = vec[i-1][j-1] + 1;
             }
             vec[i][j] = maxin;
         }
